@@ -53,7 +53,7 @@ body {
 
 /* Home Page Styles */
 .game-title {
-    font-family: 'Pixel Dead', sans-serif;
+    font-family: 'Pixel Dead', 'Press Start 2P', monospace, sans-serif;
     font-size: 5.5rem;
     color: #fff200;
     text-align: center;
