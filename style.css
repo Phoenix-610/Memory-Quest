@@ -1,0 +1,490 @@
+/* Font Import */
+@import url('https://fonts.cdnfonts.com/css/pixel-dead');
+@import url('https://fonts.cdnfonts.com/css/product-sans');
+
+/* CSS Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Product Sans Medium', sans-serif;
+    background: linear-gradient(to bottom, #ED1C24, #871015);
+    color: white;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.page {
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 20px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Home Icon */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s;
+}
+
+.home-icon:hover {
+    transform: scale(1.1);
+}
+
+/* Home Page Styles */
+.game-title {
+    font-family: 'Pixel Dead', sans-serif;
+    font-size: 5.5rem;
+    color: #fff200;
+    text-align: center;
+    text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 40px;
+}
+
+.options-container {
+    width: 80%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.option label {
+    font-size: 1.5rem;
+    color: white;
+    flex: 1;
+}
+
+.custom-select {
+    position: relative;
+    flex: 2;
+}
+
+.custom-select select {
+    appearance: none;
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 1.2rem;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: white;
+    cursor: pointer;
+    color: #333;
+    font-family: 'Product Sans Medium', sans-serif;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: #333;
+}
+
+.start-button {
+    font-family: 'Pixel Dead', sans-serif;
+    font-size: 2rem;
+    background-color: #fff200;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    padding: 15px 60px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 20px;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.start-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 9px 0 rgba(0, 0, 0, 0.3);
+}
+
+.start-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Game Page Styles */
+.level-title {
+    font-family: 'Pixel Dead', sans-serif;
+    font-size: 4rem;
+    color: #ffffff;
+    text-align: center;
+    text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+     max-width: 90vmin; /* Use viewport-relative units */
+    width: 100%;
+    margin: 0 auto;
+     padding: 10px;
+}
+
+.card {
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+     border: 4px solid white; /* Add white border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-front {
+    background-color: black; /* Default, will be overridden by JS */
+}
+
+.card-back {
+    background-color: white;
+    transform: rotateY(180deg);
+    font-size: clamp(2rem, 6vmin, 4rem); /* Responsive font size */
+}
+
+.card.matched {
+    animation: matchedAnimation 0.8s forwards;
+}
+
+@keyframes matchedAnimation {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(0);
+        opacity: 0;
+    }
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 30px;
+    background-color: white;
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.stat p:first-child {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.stat p:last-child {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ED1C24;
+}
+
+/* Game Over Page Styles */
+.game-over-title {
+    font-family: 'Pixel Dead', sans-serif;
+    font-size: 6rem;
+    color: #fff200;
+    text-align: center;
+    text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
+    margin-bottom: 50px;
+}
+
+.buttons-container {
+    display: flex;
+    gap: 30px;
+}
+
+.game-button {
+    font-family: 'Pixel Dead', sans-serif;
+    font-size: 1.5rem;
+    background-color: #fff200;
+    color: #000;
+    border: none;
+    border-radius: 12px;
+    padding: 12px 40px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 0 rgba(0, 0, 0, 0.3);
+}
+
+.game-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 rgba(0, 0, 0, 0.3);
+}
+
+.game-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* Celebration Animation */
+.celebration-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.celebration-text {
+    font-family: 'Pixel Dead', sans-serif;
+    font-size: 6rem;
+    color: #fff200;
+    text-align: center;
+    text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    position: absolute;
+    z-index: 1001;
+    animation: celebrationPulse 1s infinite alternate;
+}
+
+@keyframes celebrationPulse {
+    from { transform: scale(1); }
+    to { transform: scale(1.1); }
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff200;
+    animation: confetti-fall 3s linear forwards;
+}
+
+@keyframes confetti-fall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Adjustments */
+
+
+@media (min-width: 1200px) {
+    .card-back {
+        font-size: clamp(3rem, 8vmin, 5rem); /* Larger size for bigger screens */
+    }
+}
+
+@media (min-width: 769px) {
+    .game-grid[data-cards="20"] {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    
+    .game-grid[data-cards="24"] {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .game-grid[data-cards="28"] {
+        grid-template-columns: repeat(7, 1fr);
+    }
+}
+
+
+
+
+
+@media (max-width: 768px) {
+    .game-title {
+        font-size: 3.6rem;
+    }
+    
+    .level-title {
+        font-size: 2.5rem;
+    }
+    
+    .game-over-title {
+        font-size: 4.5rem;
+    }
+
+     .card-back {
+        font-size: clamp(1.5rem, 5vmin, 3rem); /* Medium size for tablets */
+    }
+    
+    .game-grid {
+        gap: 8px;
+    }
+    
+    .option label {
+        font-size: 1.2rem;
+    }
+    
+    .custom-select select {
+        font-size: 1rem;
+        padding: 10px;
+    }
+    
+    .start-button {
+        font-size: 1.5rem;
+        padding: 12px 40px;
+    }
+    
+    .buttons-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .card-face {
+        border-width: 2px; /* Thinner border for smaller screens */
+    }
+
+    .game-grid[data-cards="20"],
+    .game-grid[data-cards="24"],
+    .game-grid[data-cards="28"] {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+      .celebration-text {
+        font-size: 4.5rem;  /* Increased from previous size */
+    }
+    
+    .game-button {
+        font-size: 1.2rem;
+        padding: 10px 30px;
+    }
+    
+    .stat p:first-child {
+        font-size: 0.9rem;
+    }
+    
+    .stat p:last-child {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .game-title {
+        font-size: 2.6rem;
+    }
+
+     .card-back {
+        font-size: clamp(1rem, 4vmin, 2rem); /* Smaller size for mobile */
+    }
+    
+    .level-title {
+        font-size: 2rem;
+    }
+    
+    .game-over-title {
+        font-size: 3.5rem;
+    }
+    
+    .game-grid {
+        gap: 5px;
+    }
+    
+    .option {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .option label {
+        font-size: 1rem;
+    }
+    
+    .custom-select {
+        width: 100%;
+    }
+    
+    .game-stats {
+        flex-wrap: wrap;
+    }
+    
+    .stat {
+        flex: 0 0 50%;
+        margin-bottom: 10px;
+    }
+    
+    .celebration-text {
+        font-size: 3.5rem;
+    }
+
+    .card-face {
+        border-width: 1px; /* Even thinner border for mobile */
+    }
+    
+    .game-grid[data-cards="20"],
+    .game-grid[data-cards="24"],
+    .game-grid[data-cards="28"] {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+}
+
+
+

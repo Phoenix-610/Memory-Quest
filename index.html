@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memory Quest</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/pixel-dead" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/product-sans" rel="stylesheet">
+</head>
+<body>
+<div class="home-icon" id="homeIcon">
+    <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24">
+        <path fill="white" d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+    </svg>
+</div>
+
+    <!-- Home Page -->
+    <div id="homePage" class="page">
+        <h1 class="game-title">MEMORY QUEST</h1>
+        
+        <div class="options-container">
+            <div class="option">
+                <label for="colorSelect">COLOUR</label>
+                <div class="custom-select">
+                    <select id="colorSelect">
+                          <option value="yellow">Yellow</option>
+                        <option value="black">Black</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                    </select>
+                    <div class="select-arrow">▼</div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <label for="levelSelect">LEVEL</label>
+                <div class="custom-select">
+                    <select id="levelSelect">
+                        <option value="1">Level 1 - 12 Cards</option>
+                        <option value="2">Level 2 - 16 Cards</option>
+                        <option value="3">Level 3 - 20 Cards</option>
+                        <option value="4">Level 4 - 24 Cards</option>
+                        <option value="5">Level 5 - 28 Cards</option>
+                        <option value="6">Level 6 - 12 Cards (6 Misses)</option>
+                        <option value="7">Level 7 - 16 Cards (8 Misses)</option>
+                        <option value="8">Level 8 - 20 Cards (10 Misses)</option>
+                        <option value="9">Level 9 - 24 Cards (12 Misses)</option>
+                        <option value="10">Level 10 - 28 Cards (14 Misses)</option>
+                    </select>
+                    <div class="select-arrow">▼</div>
+                </div>
+            </div>
+            
+            <div class="option">
+                <label for="themeSelect">THEME</label>
+                <div class="custom-select">
+                    <select id="themeSelect">
+                        <option value="foodie">🍔 Foodie Frenzy</option>
+<option value="world">🌍 Global Quest</option>
+<option value="animals">🐾 Wild Whispers</option>
+<option value="space">🚀 Cosmic Match</option>
+<option value="hearts">❤️ HeartSync</option>
+<option value="fantasy">🧙 Mystic Realms</option>
+<option value="vacation">✈️ Getaway Grid</option>
+<option value="emojis">😄 Emoji Express</option>
+<option value="gems">💎 Gem Glimmer</option>
+<option value="festivals">🎉 Festive Flick</option>
+
+                    </select>
+                    <div class="select-arrow">▼</div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="startButton" class="start-button">START</button>
+    </div>
+
+    <!-- Game Page -->
+    <div id="gamePage" class="page hidden">
+        <div class="game-header">
+            <h2 id="levelTitle" class="level-title">LEVEL 1</h2>
+        </div>
+        
+        <div id="gameGrid" class="game-grid"></div>
+        
+        <div class="game-stats">
+            <div class="stat">
+                <p>SCORE</p>
+                <p id="score">0</p>
+            </div>
+            <div class="stat">
+                <p>TIME</p>
+                <p id="time">0 sec</p>
+            </div>
+            <div class="stat">
+                <p>MOVES</p>
+                <p id="moves">0</p>
+            </div>
+            <div class="stat">
+               <p>MISSES</p>
+               <p id="misses">0</p>
+            </div>
+            <div class="stat">
+                <p>ACCURACY</p>
+                <p id="accuracy">0 %</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Over Page -->
+    <div id="gameOverPage" class="page hidden">
+        <h1 id="gameOverTitle" class="game-over-title">GAME OVER !!</h1>
+        
+        <div class="buttons-container">
+            <button id="replayButton" class="game-button">REPLAY</button>
+            <button id="newGameButton" class="game-button">NEW GAME</button>
+        </div>
+    </div>
+
+    <!-- Celebration Animation Container -->
+    <div id="celebrationContainer" class="celebration-container hidden">
+        <div class="celebration-text" id="celebrationText"></div>
+        <div class="confetti-container" id="confettiContainer"></div>
+    </div>
+
+    <!-- Audio Elements -->
+    <audio id="matchSound" src="../Music/match.mp3"></audio>
+    <audio id="winSound" src="../Music/win.mp3"></audio>
+    <audio id="loseSound" src="../Music/lose.mp3"></audio>
+    
+    <div class="developer-credit">Developed by: TARUN</div>
+    <script src="script.js"></script>
+</body>
+</html>
