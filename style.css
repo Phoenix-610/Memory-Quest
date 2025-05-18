@@ -2,7 +2,53 @@
 @import url('https://fonts.cdnfonts.com/css/pixel-dead');
 @import url('https://fonts.cdnfonts.com/css/product-sans');
 
+
+@font-face {
+    font-family: 'Pixel Dead';
+    src: url('./fonts/PixelDead/PixelDead.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block; /* Changed from swap to block for better visibility during loading */
+}
+
 /* CSS Reset & Base Styles */
+
+
+.game-title, 
+.level-title, 
+.game-over-title, 
+.start-button, 
+.game-button, 
+.celebration-text {
+    font-family: 'Pixel Dead', monospace, sans-serif;
+}
+
+
+
+
+/* Add this to your CSS file */
+
+/* Hide text initially until fonts are loaded */
+.fonts-loading .game-title,
+.fonts-loading .level-title,
+.fonts-loading .game-over-title,
+.fonts-loading .start-button,
+.fonts-loading .game-button,
+.fonts-loading .celebration-text {
+    visibility: hidden;
+}
+
+/* Show text once fonts are loaded */
+.fonts-loaded .game-title,
+.fonts-loaded .level-title,
+.fonts-loaded .game-over-title,
+.fonts-loaded .start-button,
+.fonts-loaded .game-button,
+.fonts-loaded .celebration-text {
+    visibility: visible;
+}
+
+
 * {
     margin: 0;
     padding: 0;

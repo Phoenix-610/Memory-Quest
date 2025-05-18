@@ -88,6 +88,51 @@ let gameState = {
     maxMisses: Infinity
 };
 
+
+
+
+
+
+
+// Add this to the beginning of your script.js file
+
+// Preload the Pixel Dead font
+document.addEventListener('DOMContentLoaded', function() {
+    // Create a hidden preload element
+    const preloadFont = document.createElement('div');
+    preloadFont.style.fontFamily = 'Pixel Dead';
+    preloadFont.style.opacity = '0';
+    preloadFont.style.position = 'absolute';
+    preloadFont.style.pointerEvents = 'none';
+    preloadFont.textContent = 'Font Preload';
+    document.body.appendChild(preloadFont);
+    
+    // Force font loading on mobile
+    const pixelDeadFont = new FontFace('Pixel Dead', 'url(./Fonts/pixel dead.ttf)');
+    
+    pixelDeadFont.load().then(function(loadedFont) {
+        document.fonts.add(loadedFont);
+        console.log('Pixel Dead font loaded successfully');
+        
+        // Force redraw elements with this font
+        document.querySelectorAll('.game-title, .level-title, .game-over-title, .start-button, .game-button, .celebration-text').forEach(el => {
+            el.style.opacity = '0.99';
+            setTimeout(() => {
+                el.style.opacity = '1';
+            }, 10);
+        });
+        
+    }).catch(function(error) {
+        console.error('Font loading failed:', error);
+    });
+});
+
+// Continue with the rest of your script.js code
+
+
+
+
+
 // Event Listeners
 function initEventListeners() {
     startButton.addEventListener('click', startGame);
