@@ -2,18 +2,15 @@
 @import url('https://fonts.cdnfonts.com/css/pixel-dead');
 @import url('https://fonts.cdnfonts.com/css/product-sans');
 
-
 @font-face {
     font-family: 'Pixel Dead';
     src: url('./fonts/PixelDead/PixelDead.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
-    font-display: block; /* Changed from swap to block for better visibility during loading */
+    font-display: block;
 }
 
 /* CSS Reset & Base Styles */
-
-
 .game-title, 
 .level-title, 
 .game-over-title, 
@@ -23,11 +20,7 @@
     font-family: 'Pixel Dead', monospace, sans-serif;
 }
 
-
-
-
 /* Add this to your CSS file */
-
 /* Hide text initially until fonts are loaded */
 .fonts-loading .game-title,
 .fonts-loading .level-title,
@@ -48,7 +41,6 @@
     visibility: visible;
 }
 
-
 * {
     margin: 0;
     padding: 0;
@@ -64,8 +56,9 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start; /* Changed from center to flex-start */
     padding: 20px;
+    padding-bottom: env(safe-area-inset-bottom, 20px); /* Add safe area for devices with notches */
 }
 
 .page {
@@ -74,9 +67,10 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 40px;
-    padding: 20px;
+    justify-content: flex-start; /* Changed from center to flex-start */
+    gap: 20px; /* Reduced from 40px */
+    padding: 10px; /* Reduced from 20px */
+    margin-bottom: 15px; /* Add bottom margin */
 }
 
 .hidden {
@@ -100,11 +94,11 @@ body {
 /* Home Page Styles */
 .game-title {
     font-family: 'Pixel Dead', 'Press Start 2P', monospace, sans-serif;
-    font-size: 5.5rem;
+    font-size: 5rem; /* Slightly reduced from 5.5rem */
     color: #fff200;
     text-align: center;
     text-shadow: 6px 6px 0px rgba(0, 0, 0, 0.5);
-    margin-bottom: 40px;
+    margin-bottom: 30px; /* Reduced from 40px */
 }
 
 .options-container {
@@ -182,21 +176,22 @@ body {
 /* Game Page Styles */
 .level-title {
     font-family: 'Pixel Dead', sans-serif;
-    font-size: 4rem;
+    font-size: 3.5rem; /* Reduced from 4rem */
     color: #ffffff;
     text-align: center;
     text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced from 20px */
+    margin-top: 5px; /* Added margin-top */
 }
 
 .game-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-     max-width: 90vmin; /* Use viewport-relative units */
+    max-width: 90vmin;
     width: 100%;
     margin: 0 auto;
-     padding: 10px;
+    padding: 5px; /* Reduced from 10px */
 }
 
 .card {
@@ -228,7 +223,7 @@ body {
     justify-content: center;
     align-items: center;
     border-radius: 10px;
-     border: 4px solid white; /* Add white border */
+    border: 4px solid white;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
@@ -239,7 +234,7 @@ body {
 .card-back {
     background-color: white;
     transform: rotateY(180deg);
-    font-size: clamp(2rem, 6vmin, 4rem); /* Responsive font size */
+    font-size: clamp(2rem, 6vmin, 4rem);
 }
 
 .card.matched {
@@ -261,14 +256,20 @@ body {
     }
 }
 
+/* Game stats - Fixed bottom position */
 .game-stats {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-top: 30px;
+    width: 95%;
+    max-width: 600px;
     background-color: white;
     border-radius: 10px;
-    padding: 15px;
+    padding: 12px;
+    margin-top: 15px; /* Reduced from 30px */
+    margin-bottom: 10px; /* Added to ensure space at bottom */
+    position: relative; /* Changed from static to relative */
+    bottom: 0; /* Position at bottom */
+    z-index: 5;
 }
 
 .stat {
@@ -279,13 +280,13 @@ body {
 }
 
 .stat p:first-child {
-    font-size: 1.2rem;
+    font-size: 1.1rem; /* Reduced from 1.2rem */
     font-weight: bold;
     color: #333;
 }
 
 .stat p:last-child {
-    font-size: 1.5rem;
+    font-size: 1.4rem; /* Reduced from 1.5rem */
     font-weight: bold;
     color: #ED1C24;
 }
@@ -293,11 +294,11 @@ body {
 /* Game Over Page Styles */
 .game-over-title {
     font-family: 'Pixel Dead', sans-serif;
-    font-size: 6rem;
+    font-size: 5rem; /* Reduced from 6rem */
     color: #fff200;
     text-align: center;
     text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.5);
-    margin-bottom: 50px;
+    margin-bottom: 40px; /* Reduced from 50px */
 }
 
 .buttons-container {
@@ -344,7 +345,7 @@ body {
 
 .celebration-text {
     font-family: 'Pixel Dead', sans-serif;
-    font-size: 6rem;
+    font-size: 5rem; /* Reduced from 6rem */
     color: #fff200;
     text-align: center;
     text-shadow: 4px 4px 0px rgba(0, 0, 0, 0.5);
@@ -377,12 +378,22 @@ body {
     }
 }
 
+/* Developer credit */
+.developer-credit {
+    position: fixed;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 5px;
+    margin-top: 10px;
+}
+
 /* Responsive Adjustments */
-
-
 @media (min-width: 1200px) {
     .card-back {
-        font-size: clamp(3rem, 8vmin, 5rem); /* Larger size for bigger screens */
+        font-size: clamp(3rem, 8vmin, 5rem);
     }
 }
 
@@ -400,25 +411,34 @@ body {
     }
 }
 
-
-
-
-
 @media (max-width: 768px) {
+    body {
+        padding: 10px; /* Reduced padding */
+        padding-bottom: calc(env(safe-area-inset-bottom, 15px) + 15px); /* Safe area for notched devices */
+    }
+
+    .page {
+        gap: 15px; /* Reduced from 20px */
+        padding: 5px; /* Reduced from 10px */
+    }
+    
     .game-title {
-        font-size: 3.6rem;
+        font-size: 3.2rem; /* Further reduced */
+        margin-bottom: 20px;
     }
     
     .level-title {
-        font-size: 2.5rem;
+        font-size: 2.2rem; /* Further reduced */
+        margin-bottom: 10px;
     }
     
     .game-over-title {
-        font-size: 4.5rem;
+        font-size: 4rem;
+        margin-bottom: 30px;
     }
 
-     .card-back {
-        font-size: clamp(1.5rem, 5vmin, 3rem); /* Medium size for tablets */
+    .card-back {
+        font-size: clamp(1.5rem, 5vmin, 3rem);
     }
     
     .game-grid {
@@ -445,7 +465,7 @@ body {
     }
 
     .card-face {
-        border-width: 2px; /* Thinner border for smaller screens */
+        border-width: 2px;
     }
 
     .game-grid[data-cards="20"],
@@ -454,8 +474,8 @@ body {
         grid-template-columns: repeat(5, 1fr);
     }
 
-      .celebration-text {
-        font-size: 4.5rem;  /* Increased from previous size */
+    .celebration-text {
+        font-size: 4rem;
     }
     
     .game-button {
@@ -470,27 +490,47 @@ body {
     .stat p:last-child {
         font-size: 1.2rem;
     }
+    
+    .game-stats {
+        padding: 10px;
+        margin-top: 10px;
+    }
+    
+    .developer-credit {
+        font-size: 0.8rem;
+        padding: 3px;
+    }
 }
 
 @media (max-width: 480px) {
-    .game-title {
-        font-size: 2.6rem;
+    body {
+        padding: 8px;
+        padding-bottom: calc(env(safe-area-inset-bottom, 10px) + 10px);
     }
-
-     .card-back {
-        font-size: clamp(1rem, 4vmin, 2rem); /* Smaller size for mobile */
+    
+    .game-title {
+        font-size: 2.4rem;
+        margin-bottom: 15px;
+    }
+     
+    .card-back {
+        font-size: clamp(1rem, 4vmin, 2rem);
     }
     
     .level-title {
-        font-size: 2rem;
+        font-size: 1.8rem;
+        margin-bottom: 8px;
+        margin-top: 3px;
     }
     
     .game-over-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
+        margin-bottom: 25px;
     }
     
     .game-grid {
         gap: 5px;
+        padding: 3px;
     }
     
     .option {
@@ -508,20 +548,25 @@ body {
     }
     
     .game-stats {
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+        padding: 8px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        width: 90%;
     }
     
     .stat {
-        flex: 0 0 50%;
-        margin-bottom: 10px;
+        margin-bottom: 5px;
     }
     
     .celebration-text {
-        font-size: 3.5rem;
+        font-size: 3rem;
     }
 
     .card-face {
-        border-width: 1px; /* Even thinner border for mobile */
+        border-width: 1px;
     }
     
     .game-grid[data-cards="20"],
@@ -529,8 +574,26 @@ body {
     .game-grid[data-cards="28"] {
         grid-template-columns: repeat(4, 1fr);
     }
-
+    
+    .developer-credit {
+        font-size: 0.7rem;
+        bottom: 2px;
+    }
 }
 
-
-
+/* Fix for devices with notch/dynamic island */
+@supports (padding: max(0px)) {
+    body {
+        padding-left: max(20px, env(safe-area-inset-left));
+        padding-right: max(20px, env(safe-area-inset-right));
+        padding-bottom: max(20px, env(safe-area-inset-bottom));
+    }
+    
+    .game-stats {
+        margin-bottom: max(10px, env(safe-area-inset-bottom));
+    }
+    
+    .developer-credit {
+        bottom: env(safe-area-inset-bottom, 5px);
+    }
+}
